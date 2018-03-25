@@ -1,0 +1,41 @@
+/* pages/list/list.wxss */
+/* pages/list/list.wxss */
+
+.widget {
+  position: relative;
+  margin-top: 3rpx;
+  margin-bottom: 3rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border: #ddd 1px solid;
+}
+
+.container {
+  height: 100%;
+  display: table;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  text-align: center;
+}
+
+.column {
+  width: 4rem;
+  display: table-cell;
+  font-size: 0.7rem;
+}
+
+.link-column {
+  width: 4rem;
+  display: table-cell;
+  font-size: 0.7rem;
+}
+
+.link {
+  color: blue;
+  display: inline-table;
+}

@@ -1,0 +1,12 @@
+spring:
+  datasource:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/itcast
+      username: root
+      password: cxm1011
+server:
+  port: 8080
+  context-path:  /book
+
+mybatis:
+  mapper-locations: mapper/*Mapper.xml

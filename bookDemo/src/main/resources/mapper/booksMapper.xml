@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.booklist.mapper.BooksMapper">
+    <resultMap id="booksMap" type="com.booklist.model.BooksJson.BooksJson">
+        <result column="id" jdbcType="INTEGER" property="id"></result>
+        <result column="book_name" jdbcType="VARCHAR" property="bookName"></result>
+        <result column="author" jdbcType="VARCHAR" property="author"></result>
+        <result column="price" jdbcType="DOUBLE" property="price"></result>
+    </resultMap>
+
+    <select id="queryAllBooks" resultMap="booksMap">
+        SELECT  id,book_name,author,price FROM book_list;
+    </select>
+
+    <select id="queryBookById" resultMap="booksMap" parameterType="Integer">
+        SELECT  id,book_name,author,price FROM book_list WHERE id=#{id};
+    </select>
+
+    <insert id="addBook" parameterType="com.booklist.model.BooksEntity.AddBookEntity">
+        INSERT INTO book_list
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            book_name,
+            author,
+            price,
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test = "bookName != null">
+                #{bookName},
+            </if>
+            <if test = "author != null">
+                #{author},
+            </if>
+            <if test = "price != null">
+                #{price},
+            </if>
+
+        </trim>
+    </insert>
+
+    <delete id="deleteBookById" parameterType="Integer">
+        DELETE FROM book_list WHERE id=#{id}
+    </delete>
+
+    <update id="updateBookById" parameterType="com.booklist.model.BooksEntity.BooksEntity">
+        UPDATE  book_list SET
+            id = #{id},
+            book_name = #{bookName},
+            author = #{author},
+            price = #{price}
+        WHERE id=#{id}
+    </update>
+
+</mapper>
